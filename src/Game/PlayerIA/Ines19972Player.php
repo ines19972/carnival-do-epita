@@ -18,11 +18,17 @@ class Ines19972Player extends Player
 
     public function getChoice()
     {
+        /*
+         * If it's the first round I choose rock
+         */
         if ($this->result->getNbRound() == 0)
             return parent::rockChoice();
+        /*
+         * Else, I analyse the opponent's statistics and see what does he play the most
+         * Then I fight back with the right move
+         */
         $max = array_search(max($this->result->getStatsFor($this->opponentSide)["scissors"], $this->result->getStatsFor($this->opponentSide)["paper"],
                 $this->result->getStatsFor($this->opponentSide)["rock"]), $this->result->getStatsFor($this->opponentSide));
-        #var_dump($max);
         if ($max == "paper")
             return parent::scissorsChoice();
         if ($max == "rock")
