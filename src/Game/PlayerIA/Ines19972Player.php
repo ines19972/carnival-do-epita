@@ -20,8 +20,8 @@ class Ines19972Player extends Player
     {
         if ($this->result->getNbRound() == 0)
             return parent::rockChoice();
-        $max = array_search(max($this->result->getStatsFor($this->opponentSide)[scissors], $this->result->getStatsFor($this->opponentSide)[paper],
-                $this->result->getStatsFor($this->opponentSide)[rock]), $this->result->getStatsFor($this->opponentSide));
+        $max = array_search(max($this->result->getStatsFor($this->opponentSide)["scissors"], $this->result->getStatsFor($this->opponentSide)["paper"],
+                $this->result->getStatsFor($this->opponentSide)["rock"]), $this->result->getStatsFor($this->opponentSide));
         #var_dump($max);
         if ($max == "paper")
             return parent::scissorsChoice();
