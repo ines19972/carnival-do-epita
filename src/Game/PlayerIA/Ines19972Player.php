@@ -15,16 +15,20 @@ class Ines19972Player extends Player
     protected $opponentSide;
     protected $result;
     protected $max;
+    protected $first;
 
     public function getChoice()
     {
         /*
-         * If it's the first round I choose rock
+         * If it's the first round I choose a random value
          */
         if ($this->result->getNbRound() == 0)
-            return parent::rockChoice();
+            $first = random_int(0,2);
+            if ($first == 0)
+                return parent::rockChoice();
+            return $first == 1 ? parent::paperChoice() : parent::scissorsChoice();
         /*
-         * Else, I analyse the opponent's statistics and see what does he play the most
+         * Else, I analyze the opponent's statistics and see what does he play the most
          * Then I fight back with the right move
          */
         $max = array_search(max($this->result->getStatsFor($this->opponentSide)["scissors"], $this->result->getStatsFor($this->opponentSide)["paper"],
