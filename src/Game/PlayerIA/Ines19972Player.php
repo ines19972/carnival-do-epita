@@ -22,11 +22,12 @@ class Ines19972Player extends Player
         /*
          * If it's the first round I choose a random value
          */
-        if ($this->result->getNbRound() == 0)
-            $first = random_int(0,2);
+        if ($this->result->getNbRound() == 0) {
+            $first = random_int(0, 2);
             if ($first == 0)
                 return parent::rockChoice();
             return $first == 1 ? parent::paperChoice() : parent::scissorsChoice();
+        }
         /*
          * Else, I analyze the opponent's statistics and see what does he play the most
          * Then I fight back with the right move
